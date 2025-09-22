@@ -17,7 +17,7 @@ services:
         define('WP_REDIS_PORT', 6379);
         define('WP_CACHE', true);
     volumes:
-      - ./wordpress/:/var/www/html/
+      - ${WORDPRESS_VOLUME_PATH:-./wordpress:/var/www/html}
 
   db:
     restart: always
@@ -46,3 +46,4 @@ services:
     image: redis:alpine
     volumes:
       - ./redis:/data
+
